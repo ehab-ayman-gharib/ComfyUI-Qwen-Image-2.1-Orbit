@@ -3,7 +3,7 @@
 [![ComfyUI Custom Node](https://img.shields.io/badge/ComfyUI-Custom%20Node-blue.svg)](https://github.com/comfyanonymous/ComfyUI)
 [![Model](https://img.shields.io/badge/Model-Qwen--Image--2.1-purple.svg)](https://huggingface.co/Qwen/Qwen-Image-2.1)
 [![VRAM](https://img.shields.io/badge/VRAM-8GB%20Safe-success.svg)](#hardware--vram-optimization)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 **360° Turntable Orbit & Camera Control for Qwen-Image 2.1 in ComfyUI.**
 
@@ -62,7 +62,7 @@ Both verified workflows are located in the [`workflows/`](workflows/) folder:
 
 ```bash
 cd custom_nodes
-git clone https://github.com/<your-username>/ComfyUI-Qwen-Image-2.1-Orbit.git
+git clone https://github.com/ehab-ayman-gharib/ComfyUI-Qwen-Image-2.1-Orbit.git
 pip install -r ComfyUI-Qwen-Image-2.1-Orbit/requirements.txt
 ```
 *(Requires standard `torch`, `numpy`, and `Pillow`. Ensure `ffmpeg` is installed for MP4 export).*
@@ -74,10 +74,10 @@ pip install -r ComfyUI-Qwen-Image-2.1-Orbit/requirements.txt
 | Model | File | Path in ComfyUI | Source |
 | :--- | :--- | :--- | :--- |
 | **Viewpoint Orbit LoRA** | `orbit_alpha_lora.safetensors` | `models/loras/` | [ML-Intern-lab HF](https://huggingface.co/ML-Intern-lab/Qwen-Image-2.1-viewpoint-orbit-LoRA/blob/main/checkpoints/steps2000res768/orbit_alpha_lora/orbit_alpha_lora.safetensors) |
-| **Viggle Turbo LoRA** *(for fast workflow)* | `Qwen-Image-2.1-viggle-turbo-v0.2.1-6step-lora-r128.safetensors` | `models/loras/` | [Viggle AI HF](https://huggingface.co/viggle-ai) |
-| **Text Encoder (W4A8)** | `qwen3vl_8b_w4a8.safetensors` | `models/text_encoders/` | [Comfy-Org HF](https://huggingface.co/Comfy-Org/Qwen-Image-2.1_ComfyUI) |
-| **Diffusion Model (DiT)** | `qwen_image_2.1_Q5_K_M.gguf` (or FP8 / BF16) | `models/unet/` | [city96 GGUF](https://huggingface.co/city96/Qwen-Image-2.1-GGUF) |
-| **VAE** | `qwen_image_2.1_vae_bf16.safetensors` | `models/vae/` | [Comfy-Org HF](https://huggingface.co/Comfy-Org/Qwen-Image-2.1_ComfyUI) |
+| **Viggle Turbo LoRA** *(for fast workflow)* | `Qwen-Image-2.1-viggle-turbo-v0.2.1-6step-lora-r128.safetensors` | `models/loras/` | [Viggle AI HF](https://huggingface.co/Viggle/Qwen-Image-2.1-viggle-turbo) |
+| **Text Encoder (W4A8)** | `qwen3vl_8b_w4a8.safetensors` | `models/text_encoders/` | [Comfy-Org HF](https://huggingface.co/Comfy-Org/Qwen-Image-2.1) |
+| **Diffusion Model (DiT)** | `qwen_image_2.1_Q5_K_M.gguf` (or FP8 / BF16) | `models/unet/` | [Unsloth GGUF](https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF) / [Qwen HF](https://huggingface.co/Qwen/Qwen-Image-2.1) |
+| **VAE** | `qwen_image_2.1_vae_bf16.safetensors` | `models/vae/` | [Comfy-Org HF](https://huggingface.co/Comfy-Org/Qwen-Image-2.1) |
 | **Background Removal** | `RMBG-2.0` | via `comfyui-rmbg` | [comfyui-rmbg](https://github.com/1038lab/ComfyUI-RMBG) |
 
 > ⚠️ **8GB GPU Note**: Always use `qwen3vl_8b_w4a8.safetensors` (W4A8, ~5.88 GB). Avoid FP8 scaled (~10.58 GB) to prevent OOM.
@@ -117,4 +117,4 @@ pip install -r ComfyUI-Qwen-Image-2.1-Orbit/requirements.txt
 
 ## 📄 License
 
-[MIT License](LICENSE)
+[Apache 2.0 License](LICENSE)
