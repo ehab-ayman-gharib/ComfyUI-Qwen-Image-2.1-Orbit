@@ -11,7 +11,7 @@
 - ⚡ **Fix Any Angle in Seconds**: Regenerate and replace just one flawed viewpoint without re-running the entire turntable.
 - 🕹️ **Interactive 3D Viewer**: In-canvas orbit ring with live camera tracking (`📷`), drag scrubbing, and speed controls.
 - 📦 **One-Click Multi-Export**: Automatically export looping MP4 video, transparent animated WebP, and individual PNG frames.
-- 🛡️ **8GB VRAM Safe**: Sequential execution keeps peak VRAM strictly under 7.0 GB (tested on RTX 4070 Laptop).
+- 🛡️ **8GB VRAM Safe**: Sequential execution keeps peak VRAM strictly under 7.0 GB (tested on RTX 4070 8GB Laptop; faster on desktop & higher-tier hardware).
 
 ---
 
@@ -56,6 +56,8 @@ Both verified workflows are located in the [`workflows/`](workflows/) folder:
 | **`Qwen_Image_2.1_Viggle_Turbo_Viewpoint_Orbit.json`** | **Viggle Turbo LoRA** | **6 steps** | **~3.5 min** | **~4 sec** | ⚡ **Fastest (Recommended)** |
 | **`Qwen_Image_2.1_Viewpoint_Orbit.json`** | Standard Euler | 28–40 steps | ~12–15 min | ~90 sec | 🎨 High-precision evaluations |
 
+> ⏱️ **Benchmark Hardware**: All generation timings were tested and measured on an **RTX 4070 Laptop (8GB VRAM)** with W4A8 text encoder. Performance will be even faster on desktop GPUs and higher-tier hardware (e.g. RTX 4080, 4090, A100).
+
 ---
 
 ## 🚀 Installation
@@ -94,7 +96,7 @@ pip install -r ComfyUI-Qwen-Image-2.1-Orbit/requirements.txt
 ### How to Fix a Single Angle:
 1. In **Qwen Viewpoint Orbit Prompt**, switch `mode` to **`Patch Single Frame`**.
 2. Select the `camera_angle` you want to fix (e.g., `180`).
-3. Click **Queue Prompt**. It renders only that angle (~4s) and updates that slot in the saved turntable.
+3. Click **Queue Prompt**. It renders only that single angle (~4s on RTX 4070 Laptop) and updates that slot in the saved turntable.
 
 ---
 
@@ -108,13 +110,15 @@ pip install -r ComfyUI-Qwen-Image-2.1-Orbit/requirements.txt
 ## 🤝 Credits & Acknowledgments
 
 - **[ML-Intern-lab](https://huggingface.co/ML-Intern-lab/Qwen-Image-2.1-viewpoint-orbit-LoRA)**: Viewpoint Orbit LoRA and original Gradio demo.
-- **[Alibaba Qwen Team](https://github.com/QwenLM/Qwen-Image)**: Qwen-Image 2.1 foundational model and WanVAE.
-- **[Viggle AI](https://huggingface.co/viggle-ai)**: 6-step Turbo distillation LoRA.
+- **[Alibaba Qwen Team](https://huggingface.co/Qwen/Qwen-Image-2.1)**: Qwen-Image 2.1 foundational model and WanVAE architecture.
+- **[Viggle AI](https://huggingface.co/Viggle/Qwen-Image-2.1-viggle-turbo)**: 6-step Turbo distillation LoRA.
 - **[ComfyUI](https://github.com/comfyanonymous/ComfyUI)**: Modular generative AI platform.
 - **[BiRefNet / RMBG-2.0](https://github.com/ZhengPeng7/BiRefNet)**: Background segmentation.
 
 ---
 
-## 📄 License
+## 📄 License & Commercial Use
 
-[Apache 2.0 License](LICENSE)
+- **Code License**: This custom node and its workflows are released under the **[Apache 2.0 License](LICENSE)** — completely free for personal and commercial integration.
+- **Model Checkpoints**: The underlying Qwen-Image 2.1 model weights are governed by the **Qwen Research License Agreement** (non-commercial research / evaluation; commercial model licensing is available directly from Alibaba at `model-business@notice.qwencloud.com`).
+- **Generated Outputs**: You retain ownership of your generated output images and 360° turntables, which may be used freely in your creative and commercial projects according to applicable local laws.
