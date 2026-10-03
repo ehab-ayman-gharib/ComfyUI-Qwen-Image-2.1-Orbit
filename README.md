@@ -7,7 +7,11 @@
 
 **Complete 360° Turntable Orbit & Viewpoint Camera Control for Qwen-Image 2.1 in ComfyUI.**
 
-Generate seamless 8-view character turntables, interactively scrub camera angles on an in-canvas 3D orbit ring, surgically patch flawed angles in seconds, and automatically export looping MP4 videos and transparent animated WEBPs — all while staying strictly under **7 GB VRAM** (tested & optimized for 8GB laptop GPUs).
+- 🌀 **Full 360° Character Turntables**: Generate 8 seamless, consistent viewpoints from a single 2D image in one click.
+- ⚡ **Fix Any Angle in Seconds**: Regenerate and replace just one flawed viewpoint without re-running the entire turntable.
+- 🕹️ **Interactive In-Canvas 3D Viewer**: Scrub angles on a 3D orbit ring with live camera tracking and speed controls.
+- 📦 **One-Click Multi-Export**: Automatically export looping MP4 video, transparent animated WebP, and individual PNG frames.
+- 🛡️ **8GB VRAM Safe**: Runs sequentially under 7 GB VRAM with zero Out-of-Memory crashes on laptop GPUs.
 
 ---
 
@@ -30,22 +34,6 @@ Scrub angles directly on the ComfyUI canvas with an elliptical 3D orbit ring and
 
 ![Interactive Canvas Viewer](assets/interactive_viewer_demo.gif)
 
-### 3. Included Showcase Gallery (10 Native Turntables)
-All 10 full-resolution animated WebPs (768×768, 8 unified frames, lossless alpha) are included directly in the repository inside [`assets/turntables/`](assets/turntables/):
-
-| # | Subject & Style | Category | Direct In-Repo File | Size |
-| :-: | :--- | :--- | :--- | :-: |
-| 1 | **Egyptian Queen** | Realistic Human / Draped Fabric | [`Qwen_Viggle_Orbit_Turntable_00001_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00001_turntable.webp) | 5.9 MB |
-| 2 | **Pharaoh Stone Statue** | Museum Sculpture / Historic Artifact | [`Qwen_Viggle_Orbit_Turntable_00002_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00002_turntable.webp) | 4.5 MB |
-| 3 | **Male Fashion Model** | Realistic Human / Polo & Chinos | [`Qwen_Viggle_Orbit_Turntable_00004_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00004_turntable.webp) | 5.0 MB |
-| 4 | **Sci-Fi Stargate Portal Ring** | Hard Surface Prop / Circular Asset | [`Qwen_Viggle_Orbit_Turntable_00005_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00005_turntable.webp) | 8.2 MB |
-| 5 | **Egyptian Mummy (T-Pose)** | 3D Game Rig / Topology Reference | [`Qwen_Viggle_Orbit_Turntable_00010_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00010_turntable.webp) | 4.5 MB |
-| 6 | **Antique Greek Amphora Vase** | Ceramic Pottery / Terracotta Art | [`Qwen_Viggle_Orbit_Turntable_00016_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00016_turntable.webp) | 4.2 MB |
-| 7 | **Cute Plush Monster** | Stylized 3D Creature / Toy | [`Qwen_Viggle_Orbit_Turntable_00017_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00017_turntable.webp) | 6.6 MB |
-| 8 | **Cartoon Bunny** | 2D Illustration to 3D Orbit | [`Qwen_Viggle_Orbit_Turntable_00019_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00019_turntable.webp) | 3.8 MB |
-| 9 | **Female Fashion Model** | Realistic Clothing / Split Skirt | [`Qwen_Viggle_Orbit_Turntable_00020_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00020_turntable.webp) | 4.7 MB |
-| 10 | **Egyptian Mummy (Action Pose)** | Stylized Character / Full Spin | [`Qwen_Viggle_Orbit_Turntable_00025_turntable.webp`](assets/turntables/Qwen_Viggle_Orbit_Turntable_00025_turntable.webp) | 5.1 MB |
-
 ---
 
 ## ✨ Key Features
@@ -54,7 +42,7 @@ All 10 full-resolution animated WebPs (768×768, 8 unified frames, lossless alph
   - Synthesizes all 8 canonical perspectives in sequence: `0° Front (Generated)` $\to$ `45° Right` $\to$ `90° Right` $\to$ `135° Right` $\to$ `180° Back` $\to$ `135° Left` $\to$ `90° Left` $\to$ `45° Left`.
   - Generates the 0° front view through the model via `<orbit> keep the camera angle, eye level` rather than prepending the raw photo, ensuring **100% unified lighting, consistent style, and zero loop pop**.
 
-- ⚡ **Surgical Single-Frame Patching**:
+- ⚡ **Fix Any Single Angle (`Patch Single Frame`)**:
   - If 7 views are great but one angle (e.g. the 180° back view) needs refinement, select **`Patch Single Frame`**, pick the target angle, and queue.
   - Generates **only that 1 frame** (~4 seconds on Viggle Turbo) and automatically replaces that exact slot in the saved 8-view turntable session without losing the other 7 frames!
 
@@ -142,12 +130,12 @@ Download the following models and place them in their respective ComfyUI directo
    - Scrub the character in the **Interactive 360° Turntable Viewer**.
    - Check `output/` for the exported MP4, animated WEBP, and individual PNG frames.
 
-### How to Surgically Patch a Frame:
+### How to Fix / Replace a Single Angle:
 1. If angle `180` (back view) or `90 right` needs improvement:
 2. In **Qwen Viewpoint Orbit Prompt**, switch `mode` to **`Patch Single Frame`**.
 3. Set `camera_angle` to the angle you want to fix (e.g., `180`).
 4. Click **Queue Prompt**.
-5. Qwen generates *only that single angle* in ~4s. The viewer automatically patches that exact slot in the 8-frame turntable and re-exports your animated media!
+5. Qwen generates *only that single angle* in ~4s. The viewer automatically replaces that exact slot in the 8-frame turntable and re-exports your animated media!
 
 ---
 
