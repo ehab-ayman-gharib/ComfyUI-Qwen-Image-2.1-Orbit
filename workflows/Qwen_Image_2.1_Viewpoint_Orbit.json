@@ -627,8 +627,7 @@
           "shape": 6,
           "type": "STRING",
           "links": [
-            13,
-            14
+            13
           ]
         },
         {
@@ -671,62 +670,6 @@
       },
       "color": "#234",
       "bgcolor": "#345"
-    },
-    {
-      "id": 14,
-      "type": "ShowText|pysssss",
-      "pos": [
-        1060.0,
-        500.0
-      ],
-      "size": [
-        420.0,
-        340.0
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "text",
-          "name": "text",
-          "type": "STRING",
-          "link": 14
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "STRING",
-          "name": "STRING",
-          "shape": 6,
-          "type": "STRING",
-          "links": null
-        }
-      ],
-      "title": "Prompt sent to the model",
-      "properties": {
-        "Node name for S&R": "ShowText|pysssss"
-      },
-      "widgets_values": [
-        "an elegant egyptian queen <orbit> keep the camera angle, eye level. The image has alpha channel and the background is transparent.",
-        "an elegant egyptian queen <orbit> rotate the camera 45 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
-        "an elegant egyptian queen <orbit> rotate the camera 90 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
-        "an elegant egyptian queen <orbit> rotate the camera 135 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
-        "an elegant egyptian queen <orbit> rotate the camera 180 degrees, eye level. The image has alpha channel and the background is transparent.",
-        "an elegant egyptian queen <orbit> rotate the camera 135 degrees to the left, eye level. The image has alpha channel and the background is transparent.",
-        "an elegant egyptian queen <orbit> rotate the camera 90 degrees to the left, eye level. The image has alpha channel and the background is transparent.",
-        "an elegant egyptian queen <orbit> rotate the camera 45 degrees to the left, eye level. The image has alpha channel and the background is transparent."
-      ],
-      "widgets_values_named": {
-        "text_0": "an elegant egyptian queen <orbit> keep the camera angle, eye level. The image has alpha channel and the background is transparent.",
-        "text_1": "an elegant egyptian queen <orbit> rotate the camera 45 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
-        "text_2": "an elegant egyptian queen <orbit> rotate the camera 90 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
-        "text_3": "an elegant egyptian queen <orbit> rotate the camera 135 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
-        "text_4": "an elegant egyptian queen <orbit> rotate the camera 180 degrees, eye level. The image has alpha channel and the background is transparent.",
-        "text_5": "an elegant egyptian queen <orbit> rotate the camera 135 degrees to the left, eye level. The image has alpha channel and the background is transparent.",
-        "text_6": "an elegant egyptian queen <orbit> rotate the camera 90 degrees to the left, eye level. The image has alpha channel and the background is transparent.",
-        "text_7": "an elegant egyptian queen <orbit> rotate the camera 45 degrees to the left, eye level. The image has alpha channel and the background is transparent."
-      }
     },
     {
       "id": 7,
@@ -1361,14 +1304,6 @@
       10,
       0,
       "IMAGE"
-    ],
-    [
-      14,
-      13,
-      0,
-      14,
-      0,
-      "STRING"
     ],
     [
       15,
