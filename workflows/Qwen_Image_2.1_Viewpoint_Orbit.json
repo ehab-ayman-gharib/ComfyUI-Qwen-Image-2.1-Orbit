@@ -1,0 +1,1539 @@
+{
+  "id": "ea489017-8348-485d-bda9-0eb9707384b0",
+  "revision": 0,
+  "last_node_id": 18,
+  "last_link_id": 22,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "MarkdownNote",
+      "pos": [
+        -580.0,
+        100.0
+      ],
+      "size": [
+        540.0,
+        950.0
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note: Qwen-Image 2.1 Viewpoint Orbit & 360\u00b0 Turntable",
+      "properties": {},
+      "widgets_values": [
+        "# \ud83d\udd04 Qwen-Image 2.1 Viewpoint Orbit & 360\u00b0 Turntable Pipeline\n\nGenerate novel camera viewpoints or complete 360\u00b0 turntable loops from any single image with automatic background removal.\n\n---\n\n### \ud83d\ude80 Quick Start Guide\n\n1. **Upload Subject**:\n   - Put any photo or object image into **LoadImage** (Node 6).\n   - Solid, textured, or real-world backgrounds are automatically stripped by **RMBG** (Node 17).\n   - *(Tip: If your input image already has transparent alpha, select Node 17 and press `Ctrl + B` to bypass).*\n\n2. **Select Orbit Mode (Node 13)**:\n   - **`Full 360\u00b0 Turntable (8 Views)`**:\n     - Generates all 8 unified viewpoint angles in sequence with **1 click on Queue Prompt**.\n     - Automatically creates a smooth 360\u00b0 loop with 100% matching lighting.\n   - **`Patch Single Frame`**:\n     - If one angle needs a reroll (e.g. `180` back view), select `camera_angle` and queue!\n     - Only that single angle runs and surgically replaces that slot in your saved turntable.\n   - **`Single View (Standalone)`**:\n     - Generates 1 single novel view without turntable buffering.\n\n3. **Inspect in 360\u00b0 Viewer (Node 16)**:\n   - **Drag to Spin**: Click and drag horizontally across the viewport to smoothly inspect the 3D rotation.\n   - **3D Orbit Ring**: Camera handle (`\ud83d\udcf7`) orbits along the perspective ellipse showing exact camera position.\n   - **Interactive Ribbon**: Click any angle card for instant snapping. Auto-jumps to patched frame!\n   - **Auto-Play & Speed**: Click `\u25b6 Play` to auto-rotate. Use `\u23f1 0.5x` to cycle speed (0.5x, 1x, 0.25x, 2x).\n   - **Quick Save**: Click `\ud83d\udcbe Save Frame` to instantly download the currently viewed angle as a transparent PNG.\n\n4. **Multi-Format Export (Node 15)**:\n   - **`export_mp4`**: High-definition looping H.264 video (`.mp4`) with customizable background color.\n   - **`export_webp`**: Looping transparent animated `.webp` for web & Discord.\n   - **`export_frames`**: 8 separate numbered & angle-labeled `.png` frames preserving full RGBA alpha transparency.\n\n---\n\n### \u2699\ufe0f Sampler & Model Settings (8GB VRAM Safe)\n- **Diffusion Model**: `qwen_image_2.1_Q5_K_M.gguf` (UnetLoaderGGUF)\n- **Orbit LoRA**: `orbit_alpha_lora.safetensors` (Strength: 1.0)\n- **Text Encoder**: `qwen3vl_8b_w4a8.safetensors` (Type: `qwen_image`, avoids CUDA OOM)\n- **VAE**: `qwen_image_2.1_vae_bf16.safetensors`\n- **Background Removal**: `RMBG-2.0` (BiRefNet architecture)\n- **Sampler / Steps**: `euler` / `simple` / `28` steps (fast) or `40` steps (high quality) / `cfg: 1.0`\n"
+      ],
+      "widgets_values_named": {
+        "text": "# \ud83d\udd04 Qwen-Image 2.1 Viewpoint Orbit & 360\u00b0 Turntable Pipeline\n\nGenerate novel camera viewpoints or complete 360\u00b0 turntable loops from any single image with automatic background removal.\n\n---\n\n### \ud83d\ude80 Quick Start Guide\n\n1. **Upload Subject**:\n   - Put any photo or object image into **LoadImage** (Node 6).\n   - Solid, textured, or real-world backgrounds are automatically stripped by **RMBG** (Node 17).\n   - *(Tip: If your input image already has transparent alpha, select Node 17 and press `Ctrl + B` to bypass).*\n\n2. **Select Orbit Mode (Node 13)**:\n   - **`Full 360\u00b0 Turntable (8 Views)`**:\n     - Generates all 8 unified viewpoint angles in sequence with **1 click on Queue Prompt**.\n     - Automatically creates a smooth 360\u00b0 loop with 100% matching lighting.\n   - **`Patch Single Frame`**:\n     - If one angle needs a reroll (e.g. `180` back view), select `camera_angle` and queue!\n     - Only that single angle runs and surgically replaces that slot in your saved turntable.\n   - **`Single View (Standalone)`**:\n     - Generates 1 single novel view without turntable buffering.\n\n3. **Inspect in 360\u00b0 Viewer (Node 16)**:\n   - **Drag to Spin**: Click and drag horizontally across the viewport to smoothly inspect the 3D rotation.\n   - **3D Orbit Ring**: Camera handle (`\ud83d\udcf7`) orbits along the perspective ellipse showing exact camera position.\n   - **Interactive Ribbon**: Click any angle card for instant snapping. Auto-jumps to patched frame!\n   - **Auto-Play & Speed**: Click `\u25b6 Play` to auto-rotate. Use `\u23f1 0.5x` to cycle speed (0.5x, 1x, 0.25x, 2x).\n   - **Quick Save**: Click `\ud83d\udcbe Save Frame` to instantly download the currently viewed angle as a transparent PNG.\n\n4. **Multi-Format Export (Node 15)**:\n   - **`export_mp4`**: High-definition looping H.264 video (`.mp4`) with customizable background color.\n   - **`export_webp`**: Looping transparent animated `.webp` for web & Discord.\n   - **`export_frames`**: 8 separate numbered & angle-labeled `.png` frames preserving full RGBA alpha transparency.\n\n---\n\n### \u2699\ufe0f Sampler & Model Settings (8GB VRAM Safe)\n- **Diffusion Model**: `qwen_image_2.1_Q5_K_M.gguf` (UnetLoaderGGUF)\n- **Orbit LoRA**: `orbit_alpha_lora.safetensors` (Strength: 1.0)\n- **Text Encoder**: `qwen3vl_8b_w4a8.safetensors` (Type: `qwen_image`, avoids CUDA OOM)\n- **VAE**: `qwen_image_2.1_vae_bf16.safetensors`\n- **Background Removal**: `RMBG-2.0` (BiRefNet architecture)\n- **Sampler / Steps**: `euler` / `simple` / `28` steps (fast) or `40` steps (high quality) / `cfg: 1.0`\n"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 2,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        40.0,
+        100.0
+      ],
+      "size": [
+        360.0,
+        82.0
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UnetLoaderGGUF"
+      },
+      "widgets_values": [
+        "qwen_image_2.1_Q5_K_M.gguf"
+      ],
+      "widgets_values_named": {
+        "unet_name": "qwen_image_2.1_Q5_K_M.gguf"
+      }
+    },
+    {
+      "id": 3,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        40.0,
+        235.0
+      ],
+      "size": [
+        360.0,
+        95.0
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "localized_name": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "orbit_alpha_lora.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "orbit_alpha_lora.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 4,
+      "type": "CLIPLoader",
+      "pos": [
+        40.0,
+        385.0
+      ],
+      "size": [
+        360.0,
+        106.0
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_8b_w4a8.safetensors",
+        "qwen_image",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_8b_w4a8.safetensors",
+        "type": "qwen_image",
+        "device": "default"
+      }
+    },
+    {
+      "id": 5,
+      "type": "VAELoader",
+      "pos": [
+        40.0,
+        545.0
+      ],
+      "size": [
+        360.0,
+        82.0
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            4,
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "qwen_image_2.1_vae_bf16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+      }
+    },
+    {
+      "id": 6,
+      "type": "LoadImage",
+      "pos": [
+        560.0,
+        100.0
+      ],
+      "size": [
+        380.0,
+        310.0
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "choose file to upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            20
+          ]
+        },
+        {
+          "localized_name": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Gemini_Generated_Image_n0nhkn0nhkn0nhkn.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "Gemini_Generated_Image_n0nhkn0nhkn0nhkn.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 17,
+      "type": "RMBG",
+      "pos": [
+        560.0,
+        465.0
+      ],
+      "size": [
+        380.0,
+        292.0
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "Image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 20
+        },
+        {
+          "localized_name": "Model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "Sensitivity",
+          "name": "sensitivity",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "sensitivity"
+          },
+          "link": 22
+        },
+        {
+          "localized_name": "Processing Resolution",
+          "name": "process_res",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "process_res"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "Mask Blur",
+          "name": "mask_blur",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "mask_blur"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "Mask Offset",
+          "name": "mask_offset",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "mask_offset"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "Invert Output",
+          "name": "invert_output",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "invert_output"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "Refine Foreground",
+          "name": "refine_foreground",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "refine_foreground"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "Background",
+          "name": "background",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "background"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "Background Color",
+          "name": "background_color",
+          "shape": 7,
+          "type": "COLORCODE",
+          "widget": {
+            "name": "background_color"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            6,
+            15
+          ]
+        },
+        {
+          "localized_name": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            16
+          ]
+        },
+        {
+          "localized_name": "MASK IMAGE",
+          "name": "MASK_IMAGE",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RMBG"
+      },
+      "widgets_values": [
+        "RMBG-2.0",
+        1,
+        1024,
+        0,
+        0,
+        false,
+        false,
+        "Alpha",
+        "#222222"
+      ],
+      "widgets_values_named": {
+        "model": "RMBG-2.0",
+        "sensitivity": 1,
+        "process_res": 1024,
+        "mask_blur": 0,
+        "mask_offset": 0,
+        "invert_output": false,
+        "refine_foreground": false,
+        "background": "Alpha",
+        "background_color": "#222222"
+      },
+      "color": "#222e40",
+      "bgcolor": "#364254"
+    },
+    {
+      "id": 12,
+      "type": "QwenOrbitCanvasPrep",
+      "pos": [
+        560.0,
+        810.0
+      ],
+      "size": [
+        380.0,
+        130.0
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "localized_name": "mask",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 16
+        },
+        {
+          "localized_name": "target_size",
+          "name": "target_size",
+          "type": "INT",
+          "widget": {
+            "name": "target_size"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        },
+        {
+          "localized_name": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "localized_name": "alpha_coverage",
+          "name": "alpha_coverage",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenOrbitCanvasPrep"
+      },
+      "widgets_values": [
+        768
+      ],
+      "widgets_values_named": {
+        "target_size": 768
+      }
+    },
+    {
+      "id": 13,
+      "type": "QwenOrbitPrompt",
+      "pos": [
+        1060.0,
+        100.0
+      ],
+      "size": [
+        420.0,
+        340.0
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "mode",
+          "name": "mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "mode"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "camera_angle",
+          "name": "camera_angle",
+          "type": "COMBO",
+          "widget": {
+            "name": "camera_angle"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "camera_elevation",
+          "name": "camera_elevation",
+          "type": "COMBO",
+          "widget": {
+            "name": "camera_elevation"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "include_suffix",
+          "name": "include_suffix",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "include_suffix"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "custom_prefix",
+          "name": "custom_prefix",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "custom_prefix"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "custom_suffix",
+          "name": "custom_suffix",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "custom_suffix"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "prompt",
+          "name": "prompt",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            13,
+            14
+          ]
+        },
+        {
+          "localized_name": "angle",
+          "name": "angle",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "elevation",
+          "name": "elevation",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "display_info",
+          "name": "display_info",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenOrbitPrompt"
+      },
+      "widgets_values": [
+        "Full Turntable 360",
+        "keep angle",
+        "eye level",
+        true,
+        "an elegant egyptian queen",
+        ". The image has alpha channel and the background is transparent."
+      ],
+      "widgets_values_named": {
+        "mode": "Full Turntable 360",
+        "camera_angle": "keep angle",
+        "camera_elevation": "eye level",
+        "include_suffix": true,
+        "custom_prefix": "an elegant egyptian queen",
+        "custom_suffix": ". The image has alpha channel and the background is transparent."
+      },
+      "color": "#234",
+      "bgcolor": "#345"
+    },
+    {
+      "id": 14,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1060.0,
+        500.0
+      ],
+      "size": [
+        420.0,
+        340.0
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "text",
+          "name": "text",
+          "type": "STRING",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Prompt sent to the model",
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "an elegant egyptian queen <orbit> keep the camera angle, eye level. The image has alpha channel and the background is transparent.",
+        "an elegant egyptian queen <orbit> rotate the camera 45 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
+        "an elegant egyptian queen <orbit> rotate the camera 90 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
+        "an elegant egyptian queen <orbit> rotate the camera 135 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
+        "an elegant egyptian queen <orbit> rotate the camera 180 degrees, eye level. The image has alpha channel and the background is transparent.",
+        "an elegant egyptian queen <orbit> rotate the camera 135 degrees to the left, eye level. The image has alpha channel and the background is transparent.",
+        "an elegant egyptian queen <orbit> rotate the camera 90 degrees to the left, eye level. The image has alpha channel and the background is transparent.",
+        "an elegant egyptian queen <orbit> rotate the camera 45 degrees to the left, eye level. The image has alpha channel and the background is transparent."
+      ],
+      "widgets_values_named": {
+        "text_0": "an elegant egyptian queen <orbit> keep the camera angle, eye level. The image has alpha channel and the background is transparent.",
+        "text_1": "an elegant egyptian queen <orbit> rotate the camera 45 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
+        "text_2": "an elegant egyptian queen <orbit> rotate the camera 90 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
+        "text_3": "an elegant egyptian queen <orbit> rotate the camera 135 degrees to the right, eye level. The image has alpha channel and the background is transparent.",
+        "text_4": "an elegant egyptian queen <orbit> rotate the camera 180 degrees, eye level. The image has alpha channel and the background is transparent.",
+        "text_5": "an elegant egyptian queen <orbit> rotate the camera 135 degrees to the left, eye level. The image has alpha channel and the background is transparent.",
+        "text_6": "an elegant egyptian queen <orbit> rotate the camera 90 degrees to the left, eye level. The image has alpha channel and the background is transparent.",
+        "text_7": "an elegant egyptian queen <orbit> rotate the camera 45 degrees to the left, eye level. The image has alpha channel and the background is transparent."
+      }
+    },
+    {
+      "id": 7,
+      "type": "TextEncodeQwenImage21",
+      "pos": [
+        1600.0,
+        100.0
+      ],
+      "size": [
+        380.0,
+        340.0
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        },
+        {
+          "localized_name": "image_1",
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 7
+        },
+        {
+          "localized_name": "image_2",
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "localized_name": "image_3",
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "localized_name": "image_4",
+          "name": "images.image_4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 4
+        },
+        {
+          "localized_name": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 13
+        },
+        {
+          "localized_name": "negative_prompt",
+          "name": "negative_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "negative_prompt"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "resolution",
+          "name": "resolution",
+          "type": "INT",
+          "widget": {
+            "name": "resolution"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            8
+          ]
+        },
+        {
+          "localized_name": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ]
+        },
+        {
+          "localized_name": "latent",
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextEncodeQwenImage21"
+      },
+      "widgets_values": [
+        "",
+        "",
+        768
+      ],
+      "widgets_values_named": {
+        "prompt": "",
+        "negative_prompt": "",
+        "resolution": 768
+      }
+    },
+    {
+      "id": 8,
+      "type": "KSampler",
+      "pos": [
+        1600.0,
+        500.0
+      ],
+      "size": [
+        380.0,
+        380.0
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 2
+        },
+        {
+          "localized_name": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "localized_name": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "localized_name": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 10
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        794614039977951,
+        "randomize",
+        28,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 794614039977951,
+        "control_after_generate": "randomize",
+        "steps": 28,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 9,
+      "type": "VAEDecode",
+      "pos": [
+        1600.0,
+        940.0
+      ],
+      "size": [
+        380.0,
+        90.0
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 11
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            12,
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 16,
+      "type": "QwenTurntable360Viewer",
+      "pos": [
+        2100.0,
+        100.0
+      ],
+      "size": [
+        520.0,
+        600.0
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "orbit_images",
+          "name": "orbit_images",
+          "type": "IMAGE",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "title": "Interactive 360\u00b0 Turntable Viewer",
+      "properties": {
+        "Node name for S&R": "QwenTurntable360Viewer"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "turntable_viewer_dom": ""
+      }
+    },
+    {
+      "id": 10,
+      "type": "PreviewImage",
+      "pos": [
+        2680.0,
+        100.0
+      ],
+      "size": [
+        480.0,
+        600.0
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "title": "Rotated Novel View (Frames)",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 15,
+      "type": "QwenTurntableExport",
+      "pos": [
+        2100.0,
+        760.0
+      ],
+      "size": [
+        1060.0,
+        310.0
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 17
+        },
+        {
+          "localized_name": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "fps",
+          "name": "fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fps"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "export_mp4",
+          "name": "export_mp4",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "export_mp4"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "export_webp",
+          "name": "export_webp",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "export_webp"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "export_frames",
+          "name": "export_frames",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "export_frames"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "mp4_background",
+          "name": "mp4_background",
+          "type": "COMBO",
+          "widget": {
+            "name": "mp4_background"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "loop_count",
+          "name": "loop_count",
+          "type": "INT",
+          "widget": {
+            "name": "loop_count"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "title": "Export 360\u00b0 Turntable (MP4 / WEBP / Frames)",
+      "properties": {
+        "Node name for S&R": "QwenTurntableExport"
+      },
+      "widgets_values": [
+        "Qwen_Orbit_Turntable",
+        2.5,
+        true,
+        true,
+        true,
+        "dark",
+        2
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "Qwen_Orbit_Turntable",
+        "fps": 2.5,
+        "export_mp4": true,
+        "export_webp": true,
+        "export_frames": true,
+        "mp4_background": "dark",
+        "loop_count": 2
+      }
+    },
+    {
+      "id": 11,
+      "type": "PreviewImage",
+      "pos": [
+        560.0,
+        995.0
+      ],
+      "size": [
+        380.0,
+        260.0
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "title": "Extracted Reference View (RGBA)",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 18,
+      "type": "Reroute",
+      "pos": [
+        460.0,
+        480.0
+      ],
+      "size": [
+        60.0,
+        26.0
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "*",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      3,
+      0,
+      8,
+      0,
+      "MODEL"
+    ],
+    [
+      5,
+      5,
+      0,
+      9,
+      1,
+      "VAE"
+    ],
+    [
+      6,
+      17,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      7,
+      0,
+      8,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      7,
+      1,
+      8,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      7,
+      2,
+      8,
+      3,
+      "LATENT"
+    ],
+    [
+      11,
+      8,
+      0,
+      9,
+      0,
+      "LATENT"
+    ],
+    [
+      12,
+      9,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      13,
+      0,
+      14,
+      0,
+      "STRING"
+    ],
+    [
+      15,
+      17,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      16,
+      17,
+      1,
+      12,
+      1,
+      "MASK"
+    ],
+    [
+      19,
+      9,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      6,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      16,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      18,
+      0,
+      17,
+      2,
+      "FLOAT"
+    ],
+    [
+      3,
+      4,
+      0,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      7,
+      12,
+      0,
+      7,
+      1,
+      "IMAGE"
+    ],
+    [
+      4,
+      5,
+      0,
+      7,
+      5,
+      "VAE"
+    ],
+    [
+      13,
+      13,
+      0,
+      7,
+      6,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 0,
+      "title": "\ud83d\udcd6 Complete User Guide & Pipeline Instructions",
+      "bounding": [
+        -610.0,
+        40.0,
+        600.0,
+        1050.0
+      ],
+      "color": "#432874",
+      "flags": {}
+    },
+    {
+      "id": 1,
+      "title": "1. Model & Orbit LoRA Stack",
+      "bounding": [
+        10.0,
+        40.0,
+        420.0,
+        630.0
+      ],
+      "color": "#1e3a5f",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "2. Input Image & Background Removal (RMBG-2.0)",
+      "bounding": [
+        440.0,
+        40.0,
+        520.0,
+        1250.0
+      ],
+      "color": "#1b4332",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "3. Camera Orbit & Elevation Controls",
+      "bounding": [
+        1030.0,
+        40.0,
+        480.0,
+        840.0
+      ],
+      "color": "#7c3aed",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "4. Conditioning, Sampling & Latent Decode",
+      "bounding": [
+        1570.0,
+        40.0,
+        440.0,
+        1030.0
+      ],
+      "color": "#581c87",
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "5. Interactive 360\u00b0 Turntable & Multi-Format Exports",
+      "bounding": [
+        2070.0,
+        40.0,
+        1120.0,
+        1070.0
+      ],
+      "color": "#0f766e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5644739300537779,
+      "offset": [
+        224.05774843473378,
+        267.5286307069977
+      ]
+    }
+  },
+  "version": 0.4
+}
